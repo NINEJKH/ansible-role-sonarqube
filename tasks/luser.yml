@@ -1,0 +1,9 @@
+---
+
+- name: create sonarqube user
+  user:
+    name: "{{ sonarqube_user }}"
+    shell: /usr/sbin/nologin
+    home: /home/{{ sonarqube_user }}
+    system: yes
+  become: yes

@@ -1,0 +1,42 @@
+---
+
+- name: upsert sonar.properties
+  template:
+    src: sonar.properties
+    dest: /opt/sonarqube-{{ sonarqube_version }}/conf/sonar.properties
+    mode: 0644
+  become: yes
+  notify: restart_sonarqube
+
+- name: symlink to /usr/local/bin
+  file:
+    src: /opt/sonarqube-{{ sonarqube_version }}/bin/{{ ansible_system | lower }}-{{ ansible_architecture | replace("_", "-") }}/sonar.sh
+    dest: /usr/local/bin/sonarqube
+    state: link
+    force: yes
+  become: yes
+
+- name: add systemd
+  template:
+    src: sonarqube.service.ini
+    dest: /lib/systemd/system/sonarqube.service
+    mode: 0644
+  become: yes
+  when: sonarqube_systemd_check | succeeded
+  notify:
+    - reload_systemd
+    - restart_sonarqube
+
+- name: add init.d
+  template:
+    src: sonarqube.service.sh
+    dest: /etc/init.d/sonarqube
+    mode: 'a+x'
+  become: yes
+  when: sonarqube_systemd_check | failed
+  notify: restart_sonarqube
+
+- name: enable init.d
+  command: update-rc.d sonarqube defaults
+  become: yes
+  when: sonarqube_systemd_check | failed

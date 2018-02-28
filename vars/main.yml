@@ -1,0 +1,5 @@
+---
+
+sonarqube_download_url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-{{ sonarqube_version }}.zip
+
+sonarqube_jdbc_url: jdbc:mysql://{{ sonarqube_mysql_host }}:{{ sonarqube_mysql_port }}/{{ sonarqube_mysql_db }}?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&useSSL=false

@@ -1,0 +1,17 @@
+---
+
+- name: check for systemd
+  command: dpkg -L systemd
+  register: sonarqube_systemd_check
+  ignore_errors: yes
+
+- import_tasks: luser.yml
+
+- import_tasks: install.yml
+
+- import_tasks: configure.yml
+
+- import_tasks: plugins.yml
+  when:
+    - sonarqube_plugins is defined
+    - sonarqube_plugins | length > 0

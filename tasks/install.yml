@@ -1,0 +1,13 @@
+---
+
+- name: download sonarqube
+  unarchive:
+    src: "{{ sonarqube_download_url }}"
+    dest: /opt/
+    creates: /opt/sonarqube-{{ sonarqube_version }}
+    remote_src: yes
+    owner: "{{ sonarqube_user }}"
+  become: yes
+  notify:
+    - restart_sonarqube
+    - cleanup_sonarqube
