@@ -3,7 +3,7 @@
 - name: install plugins
   get_url:
     url: "{{ item }}"
-    dest: "{{ sonarqube_home }}/extensions/plugins/"
+    dest: /opt/sonarqube-{{ sonarqube_version }}/extensions/plugins/
     mode: 0644
   with_items: "{{ sonarqube_plugins }}"
   become: yes
