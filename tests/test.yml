@@ -6,8 +6,6 @@
 
     sonarqube_jdbc_password: farm
 
-    sonarqube_web_host: 0.0.0.0
-
     sonarqube_plugins:
       - https://sonarsource.bintray.com/Distribution/sonar-github-plugin/sonar-github-plugin-1.4.2.1027.jar
 

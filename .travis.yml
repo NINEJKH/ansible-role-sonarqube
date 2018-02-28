@@ -18,10 +18,10 @@ addons:
       - python-setuptools
       - mysql-server
       - mysql-client
+      - nmap
 
 services:
   - mysql
-  - redis-server
 
 before_install:
   - sudo mysql_upgrade
@@ -47,10 +47,6 @@ before_script:
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('farm') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
 
 script: ./test.sh
-
-after_script:
-  - ls -la /etc/init.d
-  - sudo /etc/init.d/sonarqube status
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
