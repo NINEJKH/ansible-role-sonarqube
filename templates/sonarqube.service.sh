@@ -14,5 +14,5 @@
 # Short-Description: SonarQube system (www.sonarsource.org)
 # Description: SonarQube system (www.sonarsource.org)
 ### END INIT INFO
- 
-su -l "{{ sonarqube_user }}" -c "/usr/local/bin/sonarqube $*"
+
+/sbin/runuser "{{ sonarqube_user }}" -s /bin/bash -c "/usr/local/bin/sonarqube ${*}"
