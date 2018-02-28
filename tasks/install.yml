@@ -7,6 +7,7 @@
     creates: /opt/sonarqube-{{ sonarqube_version }}
     remote_src: yes
     owner: "{{ sonarqube_user }}"
+    group: "{{ sonarqube_user }}"
   become: yes
   notify:
     - restart_sonarqube

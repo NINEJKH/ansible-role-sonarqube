@@ -4,6 +4,6 @@
   user:
     name: "{{ sonarqube_user }}"
     shell: /usr/sbin/nologin
-    home: /home/{{ sonarqube_user }}
+    home: /var/lib/{{ sonarqube_user }}
     system: yes
   become: yes
