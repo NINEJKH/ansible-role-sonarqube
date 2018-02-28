@@ -111,6 +111,8 @@ if [[ "${CONNECTION}" == "local" ]]; then
 
   consolelog "waiting for sonarqube to be ready..."
   sleep 10
+  cat /opt/sonarqube-*/logs/sonar.log
+  sudo netstat -lnp
   waitfor::tcpup "127.0.0.1" "9000"
   sleep 10
 
