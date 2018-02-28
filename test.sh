@@ -9,6 +9,7 @@ fi
 
 # required libs
 source "${__DIR__}/.bash/functions.shlib"
+source "${__DIR__}/.bash/waitfor.shlib"
 
 set -E
 trap 'throw_exception' ERR
@@ -107,5 +108,11 @@ fi
 
 if [[ "${CONNECTION}" == "local" ]]; then
   echo "127.0.0.1 sonarqube" | sudo tee -a /etc/hosts
+
+  consolelog "waiting for sonarqube to be ready..."
+  sleep 10
+  waitfor::tcpup "127.0.0.1" "9000"
+  sleep 10
+
   curl -if http://sonarqube:9000
 fi
