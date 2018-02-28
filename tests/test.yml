@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+
+  vars:
+
+    sonarqube_jdbc_password: farm
+
+    sonarqube_plugins:
+      - https://sonarsource.bintray.com/Distribution/sonar-github-plugin/sonar-github-plugin-1.4.2.1027.jar
+
+  roles:
+    - { role: "{{ role_root | default('../ansible-role-sonarqube') }}" }

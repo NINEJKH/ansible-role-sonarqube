@@ -1,0 +1,8 @@
+waitfor::tcpup() {
+  while ! echo 'foo' | ncat -w 2 "${1}" "${2}"; do
+    echo -n '.'
+    sleep 5
+  done
+  sleep 10
+  echo ''
+}

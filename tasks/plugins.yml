@@ -1,0 +1,12 @@
+---
+
+- name: install plugins
+  get_url:
+    url: "{{ item }}"
+    dest: /opt/sonarqube-{{ sonarqube_version }}/extensions/plugins/
+    mode: 0644
+    owner: "{{ sonarqube_user }}"
+    group: "{{ sonarqube_user }}"
+  with_items: "{{ sonarqube_plugins }}"
+  become: yes
+  notify: restart_sonarqube

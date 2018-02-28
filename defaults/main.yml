@@ -1,0 +1,17 @@
+---
+
+sonarqube_version: 6.7.1
+
+sonarqube_fqdn: sonarqube
+
+sonarqube_user: sonarqube
+
+sonarqube_web_host: 127.0.0.1
+
+sonarqube_mysql_host: 127.0.0.1
+
+sonarqube_mysql_port: 3306
+
+sonarqube_mysql_db: sonarqube
+
+sonarqube_jdbc_username: root
