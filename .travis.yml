@@ -48,5 +48,9 @@ before_script:
 
 script: ./test.sh
 
+after_script:
+  - ls -la /etc/init.d
+  - sudo /etc/init.d/sonarqube status
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
