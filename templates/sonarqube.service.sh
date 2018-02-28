@@ -15,4 +15,8 @@
 # Description: SonarQube system (www.sonarsource.org)
 ### END INIT INFO
 
-/sbin/runuser "{{ sonarqube_user }}" -s /bin/bash -c "/usr/local/bin/sonarqube ${*}"
+if [[ -x /sbin/runuser ]]; then
+  /sbin/runuser "{{ sonarqube_user }}" -s /bin/bash -c "/usr/local/bin/sonarqube ${*}"
+else
+  sudo -u "{{ sonarqube_user }}" /bin/bash -c "/usr/local/bin/sonarqube ${*}"
+fi
