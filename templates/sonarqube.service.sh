@@ -6,7 +6,7 @@
 # description: SonarQube system (www.sonarsource.org)
 #
 ### BEGIN INIT INFO
-# Provides: sonar
+# Provides: sonarqube
 # Required-Start: $network
 # Required-Stop: $network
 # Default-Start: 3 4 5
